@@ -18,6 +18,7 @@ class UserController extends Controller
             if (password_verify($request->password, $user->password)) {
                 return response()->json([
                     'data' => [
+                        'id' => $user->id,
                         'token' => $user->token,
                         'nama' => $user->nama,
                         'email' => $user->email,
@@ -29,6 +30,12 @@ class UserController extends Controller
             
         }
         return null;
+    }
+
+    public function profile(Request $request){
+        $user = User::where('user.token',$request->token)->get();
+
+        return response()->json(['dataUser' => $user]);
     }
 
     public function register(Request $request){

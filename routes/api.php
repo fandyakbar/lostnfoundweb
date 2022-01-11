@@ -23,9 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //login
 Route::post('login', 'Api\UserController@login')->name('login');
 Route::post('register', 'Api\UserController@register')->name('register');
+Route::post('profile', 'Api\UserController@profile')->name('profile');
 
 // Barang
 Route::get('barang', 'Api\BarangController@index')->name('barang');
+Route::post('addbarang', 'Api\BarangController@add')->name('addbarang');
+Route::post('claimbarang', 'Api\BarangController@claim')->name('claimbarang');
 
 
 
